@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <form id="myform">
+        标题：<input id="title" placeholder="请输入标题" /><br/>
+        分类：<select id="type">
+            <option value="">-请选择-</option>
+            <option value="1">类型一</option>
+            <option value="2">类型二</option>
+            <option value="3">类型三</option>
+        </select>
+        <br/>
+        <textarea id="content" placeholder="今天想说点啥"></textarea><br/>
+        <button id="submit-btn" type="submit">添加</button>
+    </form>
+    <script type="text/javascript" src="webstorage.js"></script>
+    <script type="text/javascript">
+
+        utils.getById('submit-btn').onclick = function(e) {
+            e.preventDefault();
+            //取标题
+            let title = utils.getById('title').value;
+            let type = utils.getById('type').value;
+            let content = utils.getById('content').value;
+            //去除首尾空格
+            title = title.trim();
+            content = content.trim();
+            if(!title) {
+                alert('请输入标题');
+                return;
+            }
+            if(!content) {
+                alert('请输入内容');
+                return;
+            }
+            if(!type) {
+                alert('请选择分类');
+                return;
+            }
+
+            let data = {
+                'title': title,
+                'type': type,
+                'content': content,
+                'time' : new Date().getTime()
+            };
+            let list = utils.get('list');
+            list = list ? list : [];
+            list.push(data);
+            utils.set('list', list);
+
+            location.href='./1.html';
+        }
+    </script>
+</body>
+</html>

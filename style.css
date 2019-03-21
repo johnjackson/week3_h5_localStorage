@@ -1,0 +1,22 @@
+* {
+    padding:0;
+}
+.container .nodata {
+    text-align: center;
+    padding-top: 50px;
+}
+.container ul {
+    /*width: 90%;*/
+    /*margin: 15px 0;*/
+}
+.container li{
+    list-style: none;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+.container li header{
+    border-bottom: 1px solid #ccc;
+}
+.container li time {
+    float: right;
+}
